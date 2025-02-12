@@ -376,14 +376,22 @@ namespace CheckPilot.Server.Controllers
                 // Procesar datos del cliente
                 var clientInfo = new
                 {
-                    U_FacNom = (string)invoice["U_FacNom"],
-                    U_FacNit = (string)invoice["U_FacNit"],
-                    NumAtCard = (string)invoice["NumAtCard"],
-                    U_FacFecha = DateTime.Parse(invoice["U_FacFecha"].ToString())
-                        .ToString("dddd, d 'de' MMMM 'de' yyyy", new CultureInfo("es-ES")),
-                    U_Telefonos = (string)invoice["U_Telefonos"],
-                    Address = (string)invoice["Address"]
+                    U_FacNom = string.IsNullOrEmpty((string?)invoice["U_FacNom"]) ? "Sin datos" : (string)invoice["U_FacNom"],
+                    U_FacNit = string.IsNullOrEmpty((string?)invoice["U_FacNit"]) ? "Sin datos" : (string)invoice["U_FacNit"],
+                    NumAtCard = string.IsNullOrEmpty((string?)invoice["NumAtCard"]) ? "Sin datos" : (string)invoice["NumAtCard"],
+                    U_FacFecha = !string.IsNullOrEmpty(invoice["U_FacFecha"]?.ToString()) && invoice["U_FacFecha"]?.ToString() != "false"
+                        ? DateTime.Parse(invoice["U_FacFecha"].ToString())
+                            .ToString("dddd, d 'de' MMMM 'de' yyyy", new CultureInfo("es-ES"))
+                        : "Sin datos",
+                    U_Telefonos = string.IsNullOrEmpty((string?)invoice["U_Telefonos"]) || invoice["U_Telefonos"]?.ToString() == "false"
+                        ? "Sin datos"
+                        : (string)invoice["U_Telefonos"],
+                    Address = string.IsNullOrEmpty((string?)invoice["Address"]) || invoice["Address"]?.ToString() == "false"
+                        ? "Sin datos"
+                        : (string)invoice["Address"]
                 };
+
+
 
                 return Ok(new
                 {
