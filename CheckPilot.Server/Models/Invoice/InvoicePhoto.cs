@@ -16,6 +16,7 @@ namespace CheckPilot.Models
         public byte[]? BytePhoto { get; set; }
         public byte[]? ByteSignature { get; set; }
         public string? Location { get; set; }
+        public string? Comment { get; set; }
         public RecordLog? RecordLog { get; set; } = new RecordLog();
     }
 }

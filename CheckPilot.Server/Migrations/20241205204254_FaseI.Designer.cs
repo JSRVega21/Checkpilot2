@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CheckPilot.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241104193538_FaseI")]
+    [Migration("20241205204254_FaseI")]
     partial class FaseI
     {
         /// <inheritdoc />
@@ -39,14 +39,19 @@ namespace CheckPilot.Server.Migrations
                     b.Property<byte[]>("ByteSignature")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("DocEntry")
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DocEntry")
                         .HasColumnType("int");
 
-                    b.Property<int>("DocNum")
+                    b.Property<int?>("DocNum")
                         .HasColumnType("int");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NumAtCard")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("InvoicePhotoId");

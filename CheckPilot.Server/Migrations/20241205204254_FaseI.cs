@@ -17,11 +17,13 @@ namespace CheckPilot.Server.Migrations
                 {
                     InvoicePhotoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DocEntry = table.Column<int>(type: "int", nullable: false),
-                    NumAtCard = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DocNum = table.Column<int>(type: "int", nullable: false),
+                    DocEntry = table.Column<int>(type: "int", nullable: true),
+                    NumAtCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DocNum = table.Column<int>(type: "int", nullable: true),
                     BytePhoto = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
                     ByteSignature = table.Column<byte[]>(type: "varbinary(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Comment = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RecordLog_CreatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true, comment: "Usuario que creo el registro"),
                     RecordLog_CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: true, comment: "Fecha y hora de creación del registro"),
                     RecordLog_UpdatedBy = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true, comment: "Ultimo usuario que modificó el registro"),

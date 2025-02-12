@@ -36,6 +36,9 @@ namespace CheckPilot.Server.Migrations
                     b.Property<byte[]>("ByteSignature")
                         .HasColumnType("varbinary(max)");
 
+                    b.Property<string>("Comment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("DocEntry")
                         .HasColumnType("int");
 

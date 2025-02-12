@@ -12,7 +12,7 @@ namespace CheckPilot.Server.Service
         private readonly HttpClient _client;
         private const string Username = "manager";
         private const string Password = "2023";
-        private const string Company = "P2_GT_FFACSA";
+        private const string Company = "SBO_GT_FFACSA";
 
         public SapService(HttpClient client)
         {

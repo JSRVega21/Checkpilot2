@@ -56,7 +56,7 @@ namespace CheckPilot.Server.Controllers
 
         [HttpPost("PostPhotos")]
         public async Task<IActionResult> UploadPhotos([FromForm] int docEntry, [FromForm] string numAtCard, [FromForm] int docNum, 
-            [FromForm] List<IFormFile> signature, [FromForm] List<IFormFile> photo, [FromForm] string location)
+            [FromForm] List<IFormFile> signature, [FromForm] List<IFormFile> photo, [FromForm] string location, [FromForm]string comment)
         {
             if (photo == null || photo.Count == 0 || signature == null || signature.Count == 0)
                 return BadRequest("Both photo and signature must be uploaded.");
@@ -101,7 +101,9 @@ namespace CheckPilot.Server.Controllers
                 DocNum = docNum,
                 BytePhoto = photoBytes,
                 ByteSignature = signatureBytes,
-                Location = location
+                Location = location,
+                Comment = comment
+
             };
 
             await _photoRepository.AddAsync(invoicePhoto);
