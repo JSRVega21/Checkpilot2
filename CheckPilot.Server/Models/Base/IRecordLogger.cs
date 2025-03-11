@@ -9,5 +9,6 @@ namespace CheckPilot.Models
     public interface IRecordLogger
     {
         public RecordLog RecordLog { get; set; }
+        //Sebas :3
     }
 }
